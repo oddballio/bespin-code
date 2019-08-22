@@ -235,6 +235,8 @@ GEM
     trestle-auth (0.2.5)
       bcrypt (~> 3.1.7)
       trestle (~> 0.8)
+    trestle-search (0.3.0)
+      trestle (~> 0.8, >= 0.8.10)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -280,6 +282,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   trestle
   trestle-auth
+  trestle-search
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

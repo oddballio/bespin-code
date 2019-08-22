@@ -1,4 +1,12 @@
 Trestle.resource(:administrators, model: Trestle.config.auth.user_class, scope: Auth) do
+  search do |query|
+    if query
+      Administrator.where("email ILIKE ?", "%#{query}%")
+    else
+      Administrator.all
+    end
+  end
+  
   menu do
     group :configuration, priority: :last do
       item :administrators, icon: "fa fa-users"
