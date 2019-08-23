@@ -4,3 +4,14 @@ Administrator.create(email: "carol.danvers@marvel.af.mil", password: "password",
 %w[civilian military].each do |role|
   Role.create(name: role)
 end
+
+User.destroy_all
+
+5.times do |_|
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    role: Role.all.sample
+  )
+end
