@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_23_145346) do
+ActiveRecord::Schema.define(version: 2019_08_23_151145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(version: 2019_08_23_145346) do
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.boolean "rating"
+    t.string "content"
+    t.bigint "service_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_reviews_on_service_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -91,5 +102,7 @@ ActiveRecord::Schema.define(version: 2019_08_23_145346) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "reviews", "services"
+  add_foreign_key "reviews", "users"
   add_foreign_key "users", "roles"
 end
