@@ -6,6 +6,7 @@ Administrator.create(email: "carol.danvers@marvel.af.mil", password: "password",
 end
 
 User.destroy_all
+Service.destroy_all
 
 5.times do |_|
   User.create(
@@ -13,5 +14,21 @@ User.destroy_all
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     role: Role.all.sample
+  )
+end
+
+[
+  {
+    name: 'Fuel Depot',
+    description: 'Fuel station'
+  },
+  {
+    name: 'Polygon',
+    description: 'Military facility'
+  }
+].each do |service|
+  Service.create(
+    name: service[:name],
+    description: service[:description]
   )
 end
