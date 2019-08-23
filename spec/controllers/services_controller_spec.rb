@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe V0::ServicesController, type: :controller do
 
   describe '#show' do
-    it 'should return stuff' do
+    it 'should return a service and corresponding reviews' do
       service = create(:service)
       create(:review, service: service)
       get 'show', params: { id: service.id }
