@@ -8,7 +8,7 @@ Trestle.resource(:services) do
   end
 
   menu do
-    item :services, icon: "fa fa-star"
+    item :services, icon: "fa fa-building"
   end
 
   # Customize the table columns shown on the index view.

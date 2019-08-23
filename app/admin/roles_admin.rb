@@ -8,7 +8,7 @@ Trestle.resource(:roles) do
   end
 
   menu do
-    item :roles, icon: "fa fa-star"
+    item :roles, icon: "fa fa-briefcase"
   end
 
   # Customize the table columns shown on the index view.
