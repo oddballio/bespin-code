@@ -5,8 +5,9 @@ Administrator.create(email: "carol.danvers@marvel.af.mil", password: "password",
   Role.create(name: role)
 end
 
-User.destroy_all
+Review.destroy_all
 Service.destroy_all
+User.destroy_all
 
 5.times do |_|
   User.create(
@@ -30,5 +31,16 @@ end
   Service.create(
     name: service[:name],
     description: service[:description]
+  )
+end
+
+service = Service.first
+users = User.all.shuffle
+5.times do |_|
+  Review.create(
+    rating: [true, false].sample,
+    content: Faker::Lorem.paragraph,
+    service: service,
+    user: users.delete_at(0)
   )
 end
