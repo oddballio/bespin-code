@@ -1,9 +1,23 @@
 Administrator.create(email: "james.rhodes@marvel.af.mil", password: "password", first_name: "James", last_name: "Rhodes")
 Administrator.create(email: "carol.danvers@marvel.af.mil", password: "password", first_name: "Carol", last_name: "Danvers")
 
-%w[civilian military].each do |role|
-  Role.create(name: role)
-end
+military = Role.find_or_create_by(name: 'military')
+
+military.sub_roles.create(name: 'commander')
+
+commander = Role.find_by(name: 'commander')
+
+commander.sub_roles.create(name: 'contract_officer')
+
+contract_officer = Role.find_by(name: 'contract_officer')
+
+contract_officer.sub_roles.create(name: 'contract_officer_representative')
+
+contract_officer_representative = Role.find_by(name: 'contract_officer_representative')
+
+contract_officer_representative.sub_roles.create(name: 'contractor')
+
+contract_officer_representative.sub_roles.create(name: 'vendor')
 
 Review.destroy_all
 Service.destroy_all
