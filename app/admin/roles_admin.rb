@@ -14,7 +14,9 @@ Trestle.resource(:roles) do
   # Customize the table columns shown on the index view.
   
   table do
+    column :id
     column :name
+    column :parent_id
     column :created_at, align: :center
     actions
   end
@@ -23,6 +25,7 @@ Trestle.resource(:roles) do
   #
   form do |role|
     text_field :name
+    text_field :parent_id
   
     row do
       col(xs: 6) { datetime_field :updated_at }
